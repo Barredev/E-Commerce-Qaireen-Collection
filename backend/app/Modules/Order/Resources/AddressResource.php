@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Modules\Order\Resources;
+
+use App\Models\Address;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+/**
+ * @mixin Address
+ */
+class AddressResource extends JsonResource
+{
+    /**
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'label' => $this->label,
+            'recipient_name' => $this->recipient_name,
+            'phone' => $this->phone,
+            'address_line_1' => $this->address_line_1,
+            'address_line_2' => $this->address_line_2,
+            'district' => $this->district,
+            'city' => $this->city,
+            'province' => $this->province,
+            'postal_code' => $this->postal_code,
+            'rajaongkir_destination_id' => $this->rajaongkir_destination_id,
+            'is_default' => (bool) $this->is_default,
+        ];
+    }
+}
